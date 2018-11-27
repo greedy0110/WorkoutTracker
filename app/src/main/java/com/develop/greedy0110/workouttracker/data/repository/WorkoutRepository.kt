@@ -4,6 +4,6 @@ import com.develop.greedy0110.workouttracker.data.Workout
 import io.reactivex.Single
 
 interface WorkoutRepository {
-    fun getWorkouts(): Single<List<Workout>>
+    fun getWorkouts(): List<Workout>
     fun addWorkout(workout: Workout)
 }

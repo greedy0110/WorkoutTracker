@@ -3,6 +3,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
+        <variable name="converter" type="com.develop.greedy0110.workouttracker.viewModel.Converter"/>
         <variable name="viewModel" type="com.develop.greedy0110.workouttracker.viewModel.AddWorkoutViewModel"/>
     </data>
     <LinearLayout
@@ -31,21 +32,21 @@
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:ems="10"
-                android:onTextChanged='@{(s,start,end,before) -> viewModel.input.weight(s.toString ?? "0")}'
+                android:onTextChanged='@{(s,start,end,before) -> viewModel.input.weight(converter.stringToInt(s.toString ?? ""))}'
                 android:id="@+id/weightText" android:hint="중량"/>
         <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:ems="10"
-                android:onTextChanged='@{(s,start,end,before) -> viewModel.input.rep(s.toString ?? "0")}'
+                android:onTextChanged='@{(s,start,end,before) -> viewModel.input.rep(converter.stringToInt(s.toString ?? ""))}'
                 android:id="@+id/repText" android:hint="횟수"/>
         <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:ems="10"
-                android:onTextChanged='@{(s,start,end,before) -> viewModel.input.restTime(s.toString ?? "0")}'
+                android:onTextChanged='@{(s,start,end,before) -> viewModel.input.restTime(converter.stringToInt(s.toString ?? ""))}'
                 android:id="@+id/restTextorEmpty" android:hint="쉬는 시간 (선택적)"/>
         <EditText
                 android:layout_width="match_parent"
@@ -57,7 +58,8 @@
         <Button
                 android:text="@string/add_workout_button"
                 android:layout_width="match_parent"
-                android:onClick='@{(v)->viewModel.input.clickAddButton()}'
+                android:onClick='@{(v)->viewModel.output.clickAddButton()}'
+                android:enabled="@{viewModel.output.addButtonState}"
                 android:layout_height="wrap_content" android:id="@+id/button"/>
     </LinearLayout>
 </layout>

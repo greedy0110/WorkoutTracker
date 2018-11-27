@@ -2,6 +2,8 @@ package com.develop.greedy0110.workouttracker.ui
 
 import android.app.Activity
 import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModelProvider
+import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.util.Log
@@ -10,6 +12,7 @@ import com.develop.greedy0110.workouttracker.R
 import com.develop.greedy0110.workouttracker.data.repository.WorkoutMemoryDataSource
 import com.develop.greedy0110.workouttracker.databinding.ActivityAddWorkoutBinding
 import com.develop.greedy0110.workouttracker.viewModel.AddWorkoutViewModel
+import com.develop.greedy0110.workouttracker.viewModel.Converter
 
 class AddWorkoutActivity : BaseActivity() {
 
@@ -19,16 +22,9 @@ class AddWorkoutActivity : BaseActivity() {
         binding.setLifecycleOwner(this)
 
         val dataSource = WorkoutMemoryDataSource()
-        val viewModel = AddWorkoutViewModel(Logger(), dataSource)
-        binding.viewModel = viewModel
+        val viewModel = ViewModelProviders.of(this).get(AddWorkoutViewModel::class.java)
 
-        viewModel.output.goWoroutListActivity()
-            .observe(this, Observer {
-                if (it == null) return@Observer
-                dataSource.getWorkouts().subscribe{
-                    wo ->
-                    Log.d("workout", wo.toString())
-                }
-            })
+        binding.viewModel = viewModel
+        binding.converter = Converter()
     }
 }
