@@ -4,7 +4,6 @@ import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.databinding.Bindable
 import android.util.Log
-import com.android.databinding.library.baseAdapters.BR
 import com.develop.greedy0110.workouttracker.Logger
 import com.develop.greedy0110.workouttracker.data.TypeOfExercise
 import com.develop.greedy0110.workouttracker.data.WorkSet
@@ -15,8 +14,6 @@ class AddWorkoutViewModel(
     val logger: Logger,
     val repository: WorkoutRepository
 ): BaseViewModel() {
-
-
     private var name = ""
     private var target = ""
     private var weight = 0
@@ -63,6 +60,7 @@ class AddWorkoutViewModel(
                 memo
             )
             repository.addWorkout(wo)
+
         }
     }
 
@@ -81,6 +79,16 @@ class AddWorkoutViewModel(
             enable= false
         }
         addButtonState.value = enable
+    }
+
+    init {
+        addDisposable(repository.getWorkouts()
+            .doOnError { t -> Log.e("viewModel : ", "$t") }
+            .subscribe {
+                Log.d("viewModel : ", "done")
+                for (i in 0 until it.size-1)
+                    Log.d("$i 운동 : ", "${it[i]}")
+            })
     }
 }
 

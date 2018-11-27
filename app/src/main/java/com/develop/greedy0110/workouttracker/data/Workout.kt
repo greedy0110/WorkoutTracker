@@ -5,5 +5,5 @@ import java.util.Date
 data class Workout(
     val type: TypeOfExercise,
     val sets: List<WorkSet>,
-    val memo: String = ""
+    val memo: String? = ""
 )

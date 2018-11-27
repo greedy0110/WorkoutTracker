@@ -1,9 +1,9 @@
 package com.develop.greedy0110.workouttracker.data.repository
 
 import com.develop.greedy0110.workouttracker.data.Workout
-import io.reactivex.Single
+import io.reactivex.Flowable
 
 interface WorkoutRepository {
-    fun getWorkouts(): List<Workout>
+    fun getWorkouts(): Flowable<List<Workout>>
     fun addWorkout(workout: Workout)
 }

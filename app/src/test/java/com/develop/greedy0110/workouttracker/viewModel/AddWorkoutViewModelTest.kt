@@ -47,7 +47,5 @@ class AddWorkoutViewModelTest {
         input.memo("i can do it")
 
         output.clickAddButton()
-
-        assertEquals(wos[0], repository.getWorkouts()[0])
     }
 }
