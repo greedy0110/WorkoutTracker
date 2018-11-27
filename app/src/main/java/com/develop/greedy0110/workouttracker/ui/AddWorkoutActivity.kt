@@ -10,6 +10,7 @@ import com.develop.greedy0110.workouttracker.R
 import com.develop.greedy0110.workouttracker.data.repository.WorkoutMemoryDataSource
 import com.develop.greedy0110.workouttracker.databinding.ActivityAddWorkoutBinding
 import com.develop.greedy0110.workouttracker.viewModel.AddWorkoutViewModel
+import com.develop.greedy0110.workouttracker.viewModel.Converter
 
 class AddWorkoutActivity : BaseActivity() {
 
@@ -20,15 +21,8 @@ class AddWorkoutActivity : BaseActivity() {
 
         val dataSource = WorkoutMemoryDataSource()
         val viewModel = AddWorkoutViewModel(Logger(), dataSource)
-        binding.viewModel = viewModel
 
-        viewModel.output.goWoroutListActivity()
-            .observe(this, Observer {
-                if (it == null) return@Observer
-                dataSource.getWorkouts().subscribe{
-                    wo ->
-                    Log.d("workout", wo.toString())
-                }
-            })
+        binding.viewModel = viewModel
+        binding.converter = Converter()
     }
 }

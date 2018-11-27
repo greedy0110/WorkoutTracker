@@ -6,6 +6,6 @@ import io.reactivex.Single
 
 class WorkoutMemoryDataSource: WorkoutRepository {
     private val workouts = mutableListOf<Workout>()
-    override fun getWorkouts(): Single<List<Workout>> = Single.just(workouts)
+    override fun getWorkouts(): List<Workout> = workouts
     override fun addWorkout(workout: Workout) { workouts.add(workout) }
 }
