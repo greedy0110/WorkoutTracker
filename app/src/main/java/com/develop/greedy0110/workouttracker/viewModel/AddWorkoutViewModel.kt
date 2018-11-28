@@ -16,9 +16,6 @@ class AddWorkoutViewModel(
 ): BaseViewModel() {
     private var name = ""
     private var target = ""
-    private var weight = 0
-    private var rep = 0
-    private var restTime = 0
     private var memo = ""
     val input = object: AddWorkoutViewModelInput {
         override fun name(s: String) {
@@ -31,36 +28,33 @@ class AddWorkoutViewModel(
             enableAddButton()
         }
 
-        override fun weight(s: Int) {
-            weight = s
-            enableAddButton()
-        }
-
-        override fun rep(s: Int) {
-            rep = s
-            enableAddButton()
-        }
-
-        override fun restTime(s: Int) {
-            restTime = s
-        }
-
         override fun memo(s: String) {
             memo = s
         }
     }
 
     private val addButtonState: MutableLiveData<Boolean> by lazy { MutableLiveData<Boolean>() }
+    val worksets: MutableLiveData<MutableList<WorkSet>> by lazy { MutableLiveData<MutableList<WorkSet>>() }
+    init {
+        worksets.value = mutableListOf(WorkSet(0,0,60))
+    }
+
     val output = object : AddWorkoutViewModelOutput {
         override fun addButtonState() = addButtonState
         override fun clickAddButton() {
-            val wo = Workout(
-                TypeOfExercise(name, target),
-                listOf(WorkSet(weight, rep, restTime)),
-                memo
-            )
-            repository.addWorkout(wo)
+            worksets.value?.let {
+                val wo = Workout(
+                    TypeOfExercise(name, target),
+                    it,
+                    memo
+                )
+                repository.addWorkout(wo)
+            }
+        }
 
+        override fun clickAddSetButton() {
+            worksets.value?.add(WorkSet(0,0,60))
+            worksets.value = worksets.value // for react ui
         }
     }
 
@@ -70,12 +64,6 @@ class AddWorkoutViewModel(
             enable= false
         }
         if (target.isNullOrEmpty()) {
-            enable= false
-        }
-        if (weight <= 0) {
-            enable= false
-        }
-        if (rep <= 0) {
             enable= false
         }
         addButtonState.value = enable
@@ -95,13 +83,11 @@ class AddWorkoutViewModel(
 interface AddWorkoutViewModelInput: Input {
     fun name(s: String)
     fun target(s: String)
-    fun weight(s: Int)
-    fun rep(s: Int)
-    fun restTime(s: Int)
     fun memo(s: String)
 }
 
 interface AddWorkoutViewModelOutput: Output {
     fun addButtonState(): LiveData<Boolean>
     fun clickAddButton()
+    fun clickAddSetButton()
 }

@@ -62,4 +62,7 @@ dependencies {
     implementation "android.arch.persistence.room:rxjava2:$room_version"
     // Test helpers
     testImplementation "android.arch.persistence.room:testing:$room_version"
+    
+    implementation 'com.github.markushi:circlebutton:1.1'
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
 }

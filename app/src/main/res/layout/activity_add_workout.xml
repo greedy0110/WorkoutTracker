@@ -30,31 +30,27 @@
         <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number"
-                android:ems="10"
-                android:onTextChanged='@{(s,start,end,before) -> viewModel.input.weight(converter.stringToInt(s.toString ?? ""))}'
-                android:id="@+id/weightText" android:hint="중량"/>
-        <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:ems="10"
-                android:onTextChanged='@{(s,start,end,before) -> viewModel.input.rep(converter.stringToInt(s.toString ?? ""))}'
-                android:id="@+id/repText" android:hint="횟수"/>
-        <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:ems="10"
-                android:onTextChanged='@{(s,start,end,before) -> viewModel.input.restTime(converter.stringToInt(s.toString ?? ""))}'
-                android:id="@+id/restTextorEmpty" android:hint="쉬는 시간 (선택적)"/>
-        <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:inputType="textMultiLine"
                 android:ems="10"
                 android:onTextChanged='@{(s,start,end,before) -> viewModel.input.memo(s.toString ?? "")}'
                 android:id="@+id/memoText" android:hint="메모"/>
+        <TextView
+                android:text="세트"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/textView"/>
+        <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/set_recyclerview"
+                app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+                app:data="@{viewModel.worksets}"
+                >
+        </android.support.v7.widget.RecyclerView>
+        <Button
+                android:text="세트 추가"
+                android:layout_width="match_parent"
+                android:onClick="@{(v)->viewModel.output.clickAddSetButton()}"
+                android:layout_height="wrap_content" android:id="@+id/add_set_button"/>
         <Button
                 android:text="@string/add_workout_button"
                 android:layout_width="match_parent"
