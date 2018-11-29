@@ -21,6 +21,7 @@ class WorkSetViewModel(val pos: Int, val worksets: MutableLiveData<MutableList<W
     val input = object : WorkSetViewModelInput {
         override fun weight(s: Int) {
             weight = s
+            Log.d("WorksetviewModel : ", "$pos : ${getWorkSet()}")
             modifyWorkSet()
         }
 

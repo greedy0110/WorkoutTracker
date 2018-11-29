@@ -22,16 +22,10 @@ import com.develop.greedy0110.workouttracker.viewModel.WorkSetViewModel
 
 class WorksetAdapter:
         RecyclerView.Adapter<WorksetAdapter.ViewHolder>() {
-//    var data: MutableList<WorkSet> = mutableListOf()
-//        set(value) {
-//            field = value
-//            notifyDataSetChanged()
-//        }
-
     var data: MutableLiveData<MutableList<WorkSet>> = MutableLiveData()
         set(value) {
-            field =value
-            notifyDataSetChanged()
+            field = value
+            notifyDataSetChanged() // TODO 이거 쓰면 스크롤이 제일 위로 올라가면서 사용자가 사용하기 매----우 불편함
         }
 
     private var inflater: LayoutInflater? = null
@@ -40,6 +34,7 @@ class WorksetAdapter:
     class ViewHolder(val binding: WorksetDataUiBinding): RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        Log.d("onCreateViewHolder : ", "create")
         if (inflater == null)
             inflater = LayoutInflater.from(parent.context)
         val binding = DataBindingUtil.inflate<WorksetDataUiBinding>(
@@ -58,13 +53,12 @@ class WorksetAdapter:
 
     override fun getItemCount() = data.value!!.size
 
+    override fun getItemViewType(position: Int) = position
+
     private fun removeAt(pos: Int) {
         data.value!!.removeAt(pos)
+        data.value = data.value
         notifyItemRemoved(pos)
-        notifyItemRangeChanged(pos, data.value!!.size)
-        data.value?.let {
-            it.removeAt(pos)
-            data.value = it
-        }
+        notifyItemRangeChanged(pos, itemCount)
     }
 }
