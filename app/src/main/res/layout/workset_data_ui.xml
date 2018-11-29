@@ -3,10 +3,11 @@
     <data>
         <variable name="converter" type="com.develop.greedy0110.workouttracker.viewModel.Converter"/>
         <variable name="worksetViewModel" type="com.develop.greedy0110.workouttracker.viewModel.WorkSetViewModel"/>
+        <variable name="workset" type="com.develop.greedy0110.workouttracker.data.WorkSet"/>
     </data>
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                   android:layout_width="match_parent"
-                  android:layout_height="match_parent"
+                  android:layout_height="wrap_content"
                   android:orientation="horizontal">
 
         <EditText

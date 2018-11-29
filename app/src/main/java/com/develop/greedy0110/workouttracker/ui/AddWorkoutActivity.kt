@@ -27,11 +27,12 @@ class AddWorkoutActivity : BaseActivity() {
             this, AddWorkoutViewModelFactory(Logger(), dataSource)
         ).get(AddWorkoutViewModel::class.java)
 
-        set_recyclerview.layoutManager = LinearLayoutManager(this)
-        set_recyclerview.adapter = WorksetAdapter()
 
         binding.viewModel = viewModel
         binding.converter = Converter()
+
+        set_recyclerview.layoutManager = LinearLayoutManager(this)
+        set_recyclerview.adapter = WorksetAdapter()
     }
 }
 

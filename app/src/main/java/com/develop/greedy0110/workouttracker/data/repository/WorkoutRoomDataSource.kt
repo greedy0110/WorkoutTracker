@@ -35,7 +35,6 @@ class WorkoutRoomDataSource(val context: Context): WorkoutRepository {
         Observable.just(db)
             .subscribeOn(Schedulers.io())
             .subscribe {it.workoutDao().insertAll(workoutToEntity(workout))}
-            .dispose()
     }
 
     private fun entityToWorkout(e: WorkoutEntity): Workout {

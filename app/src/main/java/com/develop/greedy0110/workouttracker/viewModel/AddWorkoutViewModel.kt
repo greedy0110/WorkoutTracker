@@ -35,9 +35,6 @@ class AddWorkoutViewModel(
 
     private val addButtonState: MutableLiveData<Boolean> by lazy { MutableLiveData<Boolean>() }
     val worksets: MutableLiveData<MutableList<WorkSet>> by lazy { MutableLiveData<MutableList<WorkSet>>() }
-    init {
-        worksets.value = mutableListOf(WorkSet(0,0,60))
-    }
 
     val output = object : AddWorkoutViewModelOutput {
         override fun addButtonState() = addButtonState
@@ -70,6 +67,8 @@ class AddWorkoutViewModel(
     }
 
     init {
+        worksets.value = mutableListOf(WorkSet(0,0,60))
+
         addDisposable(repository.getWorkouts()
             .doOnError { t -> Log.e("viewModel : ", "$t") }
             .subscribe {

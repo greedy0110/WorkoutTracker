@@ -10,13 +10,7 @@ import org.junit.Before
 import org.junit.Test
 
 class AddWorkoutViewModelTest {
-    class test1DataSource: WorkoutRepository {
-        val wos = mutableListOf<Workout>()
 
-        override fun getWorkouts(): List<Workout> = wos
-
-        override fun addWorkout(workout: Workout) { wos.add(workout)}
-    }
 
     lateinit var vm: AddWorkoutViewModel
     lateinit var input: AddWorkoutViewModelInput
@@ -25,7 +19,6 @@ class AddWorkoutViewModelTest {
 
     @Before
     fun initWorkouts() {
-        repository = test1DataSource()
         vm = AddWorkoutViewModel(Logger(), repository)
         input = vm.input
         output = vm.output
@@ -33,19 +26,5 @@ class AddWorkoutViewModelTest {
 
     @Test
     fun addWorkout1(){
-        val wos = mutableListOf(Workout(
-            TypeOfExercise("row", "back"),
-            listOf(WorkSet(50,12,60)),
-            "i can do it"
-        ))
-
-        input.name("row")
-        input.target ("back")
-        input.weight(50)
-        input.rep(12)
-        input.restTime(60)
-        input.memo("i can do it")
-
-        output.clickAddButton()
     }
 }
