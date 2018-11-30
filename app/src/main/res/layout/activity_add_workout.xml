@@ -36,6 +36,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/set_recyclerview"
                 app:layoutManager="android.support.v7.widget.StaggeredGridLayoutManager"
+                android:adapter="@{viewModel.adapter}"
                 app:data="@{viewModel.worksets}"
         >
         </android.support.v7.widget.RecyclerView>

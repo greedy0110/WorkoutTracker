@@ -8,6 +8,7 @@ import com.develop.greedy0110.workouttracker.Logger
 import com.develop.greedy0110.workouttracker.data.TypeOfExercise
 import com.develop.greedy0110.workouttracker.data.WorkSet
 import com.develop.greedy0110.workouttracker.data.Workout
+import com.develop.greedy0110.workouttracker.data.adapter.WorksetAdapter
 import com.develop.greedy0110.workouttracker.data.repository.WorkoutRepository
 
 class AddWorkoutViewModel(
@@ -35,6 +36,7 @@ class AddWorkoutViewModel(
 
     private val addButtonState: MutableLiveData<Boolean> by lazy { MutableLiveData<Boolean>() }
     val worksets: MutableLiveData<MutableList<WorkSet>> by lazy { MutableLiveData<MutableList<WorkSet>>() }
+    val adapter: WorksetAdapter by lazy { WorksetAdapter() }
 
     val output = object : AddWorkoutViewModelOutput {
         override fun addButtonState() = addButtonState
@@ -52,6 +54,7 @@ class AddWorkoutViewModel(
         override fun clickAddSetButton() {
             worksets.value?.add(WorkSet(0,0,60))
             worksets.value = worksets.value // for react ui
+            adapter.notifyDataSetChanged()
         }
     }
 

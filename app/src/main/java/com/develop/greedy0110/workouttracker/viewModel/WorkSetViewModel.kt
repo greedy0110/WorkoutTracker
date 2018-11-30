@@ -6,9 +6,9 @@ import android.util.Log
 import com.develop.greedy0110.workouttracker.data.WorkSet
 
 class WorkSetViewModel(val pos: Int, val worksets: MutableLiveData<MutableList<WorkSet>>): BaseViewModel() {
-    private var weight = 0
-    private var rep = 0
-    private var restTime = 0
+    var weight = 0
+    var rep = 0
+    var restTime = 0
 
     init {
         val workset = worksets.value!![pos]

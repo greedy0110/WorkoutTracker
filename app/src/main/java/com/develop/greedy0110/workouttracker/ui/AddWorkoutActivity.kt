@@ -30,9 +30,6 @@ class AddWorkoutActivity : BaseActivity() {
 
         binding.viewModel = viewModel
         binding.converter = Converter()
-
-        set_recyclerview.layoutManager = LinearLayoutManager(this)
-        set_recyclerview.adapter = WorksetAdapter()
     }
 }
 

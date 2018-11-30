@@ -23,10 +23,6 @@ import com.develop.greedy0110.workouttracker.viewModel.WorkSetViewModel
 class WorksetAdapter:
         RecyclerView.Adapter<WorksetAdapter.ViewHolder>() {
     var data: MutableLiveData<MutableList<WorkSet>> = MutableLiveData()
-        set(value) {
-            field = value
-            notifyDataSetChanged() // TODO 이거 쓰면 스크롤이 제일 위로 올라가면서 사용자가 사용하기 매----우 불편함
-        }
 
     private var inflater: LayoutInflater? = null
 
@@ -56,9 +52,8 @@ class WorksetAdapter:
     override fun getItemViewType(position: Int) = position
 
     private fun removeAt(pos: Int) {
+        Log.d("Remove At ", "$pos : ${data.value!![pos]}")
         data.value!!.removeAt(pos)
-        data.value = data.value
-        notifyItemRemoved(pos)
-        notifyItemRangeChanged(pos, itemCount)
+        notifyDataSetChanged()
     }
 }
