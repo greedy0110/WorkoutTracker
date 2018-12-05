@@ -1,8 +1,9 @@
 package com.develop.greedy0110.workouttracker.viewModel
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
-import android.databinding.Bindable
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.databinding.Bindable
+import android.icu.util.Output
 import android.util.Log
 import com.develop.greedy0110.workouttracker.Logger
 import com.develop.greedy0110.workouttracker.data.TypeOfExercise
@@ -82,13 +83,13 @@ class AddWorkoutViewModel(
     }
 }
 
-interface AddWorkoutViewModelInput: Input {
+interface AddWorkoutViewModelInput {
     fun name(s: String)
     fun target(s: String)
     fun memo(s: String)
 }
 
-interface AddWorkoutViewModelOutput: Output {
+interface AddWorkoutViewModelOutput {
     fun addButtonState(): LiveData<Boolean>
     fun clickAddButton()
     fun clickAddSetButton()

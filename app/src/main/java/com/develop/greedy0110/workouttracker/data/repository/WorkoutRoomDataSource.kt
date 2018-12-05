@@ -1,6 +1,6 @@
 package com.develop.greedy0110.workouttracker.data.repository
 
-import android.arch.persistence.room.*
+import androidx.room.*
 import android.content.Context
 import com.develop.greedy0110.workouttracker.R.id.all
 import com.develop.greedy0110.workouttracker.data.TypeOfExercise

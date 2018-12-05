@@ -4,7 +4,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable name="converter" type="com.develop.greedy0110.workouttracker.viewModel.Converter"/>
-        <variable name="viewModel" type="com.develop.greedy0110.workouttracker.viewModel.AddWorkoutViewModel"/>
+        <variable name="viewModel" type="com.develop.greedy0110.workouttracker.viewModel.WorkoutViewModel"/>
     </data>
     <LinearLayout
 
@@ -18,45 +18,38 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
                 android:ems="10"
-                android:onTextChanged='@{(s,start,end,before) -> viewModel.input.name(s.toString ?? "")}'
                 android:id="@+id/workoutName" android:hint="운동 이름"/>
         <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
                 android:ems="10"
-                android:onTextChanged='@{(s,start,end,before) -> viewModel.input.target(s.toString ?? "")}'
                 android:id="@+id/targetName" android:hint="운동 타겟 부위"/>
         <TextView
                 android:text="세트"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/textView"/>
-        <android.support.v7.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/set_recyclerview"
-                app:layoutManager="android.support.v7.widget.StaggeredGridLayoutManager"
-                android:adapter="@{viewModel.adapter}"
-                app:data="@{viewModel.worksets}"
-        >
-        </android.support.v7.widget.RecyclerView>
+                app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager">
+        </androidx.recyclerview.widget.RecyclerView>
         <Button
                 android:text="세트 추가"
                 android:layout_width="match_parent"
-                android:onClick="@{(v)->viewModel.output.clickAddSetButton()}"
+                android:onClick="@{v->viewModel.clickAddSet()}"
                 android:layout_height="wrap_content" android:id="@+id/add_set_button"/>
         <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textMultiLine"
                 android:ems="10"
-                android:onTextChanged='@{(s,start,end,before) -> viewModel.input.memo(s.toString ?? "")}'
                 android:id="@+id/memoText" android:hint="메모"/>
         <Button
                 android:text="@string/add_workout_button"
                 android:layout_width="match_parent"
-                android:onClick='@{(v)->viewModel.output.clickAddButton()}'
-                android:enabled="@{viewModel.output.addButtonState}"
+                android:onClick="@{v->viewModel.clickAddWorkout()}"
                 android:layout_height="wrap_content" android:id="@+id/button"/>
     </LinearLayout>
 </layout>

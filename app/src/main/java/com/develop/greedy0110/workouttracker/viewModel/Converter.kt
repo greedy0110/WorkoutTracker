@@ -1,6 +1,6 @@
 package com.develop.greedy0110.workouttracker.viewModel
 
-import android.databinding.InverseMethod
+import androidx.databinding.InverseMethod
 import java.lang.NumberFormatException
 
 class Converter {

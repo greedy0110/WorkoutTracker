@@ -1,7 +1,7 @@
 package com.develop.greedy0110.workouttracker.viewModel
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import android.util.Log
 import com.develop.greedy0110.workouttracker.data.WorkSet
 
@@ -50,7 +50,7 @@ class WorkSetViewModel(val pos: Int, val worksets: MutableLiveData<MutableList<W
     }
 }
 
-interface WorkSetViewModelInput: Input {
+interface WorkSetViewModelInput {
     fun weight(s: Int)
     fun rep(s: Int)
     fun restTime(s: Int)
