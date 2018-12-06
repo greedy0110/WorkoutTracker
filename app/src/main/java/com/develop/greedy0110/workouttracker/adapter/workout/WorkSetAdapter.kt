@@ -1,13 +1,11 @@
-package com.develop.greedy0110.workouttracker.adapter
+package com.develop.greedy0110.workouttracker.adapter.workout
 
 import android.view.ViewGroup
-import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
+import com.develop.greedy0110.workouttracker.adapter.BaseAdapter
 import com.develop.greedy0110.workouttracker.databinding.WorksetDataUiBinding
-import com.develop.greedy0110.workouttracker.model.workout.WorkSet
-import com.develop.greedy0110.workouttracker.view.WorkSetViewAdapter
-import com.develop.greedy0110.workouttracker.viewModel.WorkSetDataAdapter
-import io.reactivex.subjects.PublishSubject
+import com.develop.greedy0110.workouttracker.view.workout.WorkSetViewAdapter
+import com.develop.greedy0110.workouttracker.viewModel.workout.WorkSetDataAdapter
 
 class WorkSetAdapter(
     override val data: WorkSetDataAdapter,

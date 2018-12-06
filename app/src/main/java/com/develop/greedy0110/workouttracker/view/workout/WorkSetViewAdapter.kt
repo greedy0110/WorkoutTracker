@@ -1,18 +1,14 @@
-package com.develop.greedy0110.workouttracker.view
+package com.develop.greedy0110.workouttracker.view.workout
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.EditText
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import com.develop.greedy0110.workouttracker.R
 import com.develop.greedy0110.workouttracker.adapter.BaseViewAdapter
-import com.develop.greedy0110.workouttracker.adapter.WorkSetAdapter
+import com.develop.greedy0110.workouttracker.adapter.workout.WorkSetAdapter
 import com.develop.greedy0110.workouttracker.databinding.WorksetDataUiBinding
-import com.develop.greedy0110.workouttracker.viewModel.WorkSetDataAdapter
-import com.develop.greedy0110.workouttracker.viewModel.WorkSetViewModel
-import com.jakewharton.rxbinding3.widget.textChanges
-import io.reactivex.rxkotlin.addTo
+import com.develop.greedy0110.workouttracker.viewModel.workout.WorkSetDataAdapter
+import com.develop.greedy0110.workouttracker.viewModel.workout.WorkSetViewModel
 
 class WorkSetViewAdapter(
     val dataAdapter: WorkSetDataAdapter

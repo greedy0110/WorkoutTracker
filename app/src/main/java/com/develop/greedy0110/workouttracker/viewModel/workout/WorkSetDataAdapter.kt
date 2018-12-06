@@ -1,4 +1,4 @@
-package com.develop.greedy0110.workouttracker.viewModel
+package com.develop.greedy0110.workouttracker.viewModel.workout
 
 import com.develop.greedy0110.workouttracker.adapter.BaseDataAdapter
 import com.develop.greedy0110.workouttracker.model.workout.WorkSet

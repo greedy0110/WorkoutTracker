@@ -1,4 +1,4 @@
-package com.develop.greedy0110.workouttracker.viewModel
+package com.develop.greedy0110.workouttracker.viewModel.workout
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -6,6 +6,7 @@ import com.develop.greedy0110.workouttracker.model.workout.WorkSet
 import com.develop.greedy0110.workouttracker.utils.SingleLiveEvent
 import com.develop.greedy0110.workouttracker.utils.default
 import com.develop.greedy0110.workouttracker.utils.stringToInt
+import com.develop.greedy0110.workouttracker.viewModel.BaseViewModel
 
 class WorkSetViewModel(val workSet: WorkSet = WorkSet(0,0,0)): BaseViewModel() {
 //    var weight = 0

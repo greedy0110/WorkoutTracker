@@ -2,7 +2,7 @@
 <layout>
     <data>
         <import type="com.develop.greedy0110.workouttracker.utils.ParserKt"/>
-        <variable name="viewModel" type="com.develop.greedy0110.workouttracker.viewModel.WorkSetViewModel"/>
+        <variable name="viewModel" type="com.develop.greedy0110.workouttracker.viewModel.workout.WorkSetViewModel"/>
     </data>
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                   android:layout_width="match_parent"

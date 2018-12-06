@@ -1,15 +1,13 @@
-package com.develop.greedy0110.workouttracker.viewModel
+package com.develop.greedy0110.workouttracker.viewModel.workout
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import android.util.Log
 import com.develop.greedy0110.workouttracker.model.workout.TypeOfExercise
-import com.develop.greedy0110.workouttracker.model.workout.WorkSet
 import com.develop.greedy0110.workouttracker.model.workout.Workout
 import com.develop.greedy0110.workouttracker.model.workout.WorkoutRepository
 import com.develop.greedy0110.workouttracker.utils.SingleLiveEvent
-import com.develop.greedy0110.workouttracker.utils.addAndSync
-import io.reactivex.subjects.PublishSubject
+import com.develop.greedy0110.workouttracker.viewModel.BaseViewModel
 
 class WorkoutViewModel(private val repository: WorkoutRepository): BaseViewModel() {
     private val _name = MutableLiveData<String>()

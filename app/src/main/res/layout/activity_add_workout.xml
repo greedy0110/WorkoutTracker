@@ -3,7 +3,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
-        <variable name="viewModel" type="com.develop.greedy0110.workouttracker.viewModel.WorkoutViewModel"/>
+        <variable name="viewModel" type="com.develop.greedy0110.workouttracker.viewModel.workout.WorkoutViewModel"/>
     </data>
     <LinearLayout
 

@@ -1,9 +1,10 @@
-package com.develop.greedy0110.workouttracker.translator
+package com.develop.greedy0110.workouttracker.translator.workout
 
 import com.develop.greedy0110.workouttracker.model.workout.TypeOfExercise
 import com.develop.greedy0110.workouttracker.model.workout.WorkSet
 import com.develop.greedy0110.workouttracker.model.workout.Workout
 import com.develop.greedy0110.workouttracker.room.workout.WorkoutEntity
+import com.develop.greedy0110.workouttracker.translator.BaseTranslator
 import com.google.gson.Gson
 
 class WorkoutTranslator: BaseTranslator<Workout, WorkoutEntity> {
