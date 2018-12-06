@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">WorkoutTracker</string>
+    <string name="add_workout_button">운동 입력</string>
 </resources>
