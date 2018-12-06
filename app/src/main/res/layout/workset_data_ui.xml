@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
     <data>
-        <variable name="converter" type="com.develop.greedy0110.workouttracker.viewModel.Converter"/>
-        <variable name="worksetViewModel" type="com.develop.greedy0110.workouttracker.viewModel.WorkSetViewModel"/>
-        <variable name="workset" type="com.develop.greedy0110.workouttracker.data.WorkSet"/>
+        <import type="com.develop.greedy0110.workouttracker.utils.ParserKt"/>
+        <variable name="viewModel" type="com.develop.greedy0110.workouttracker.viewModel.WorkSetViewModel"/>
     </data>
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                   android:layout_width="match_parent"
@@ -13,23 +12,24 @@
         <EditText
                 android:layout_width="wrap_content" android:inputType="number"
                 android:layout_height="wrap_content" android:id="@+id/workset_weight" android:layout_weight="1"
-                android:text="@{converter.intToString(worksetViewModel.weight)}"
-                android:onTextChanged='@{(s,start,end,before) -> worksetViewModel.input.weight(converter.stringToInt(s.toString ?? ""))}'
+                android:text="@{viewModel.weight.toString()}"
+                android:onTextChanged='@{(s,start,end,before) -> viewModel.parseWeight(s.toString ?? "")}'
                 android:hint="중량"/>
         <EditText
                 android:layout_width="wrap_content" android:inputType="number"
                 android:layout_height="wrap_content" android:id="@+id/workset_rep" android:layout_weight="1"
-                android:text="@{converter.intToString(worksetViewModel.rep)}"
-                android:onTextChanged='@{(s,start,end,before) -> worksetViewModel.input.rep(converter.stringToInt(s.toString ?? ""))}'
+                android:text="@{viewModel.rep.toString()}"
+                android:onTextChanged='@{(s,start,end,before) -> viewModel.parseRep(s.toString ?? "")}'
                 android:hint="반복"/>
         <EditText
                 android:layout_width="wrap_content" android:inputType="number"
                 android:layout_height="wrap_content" android:id="@+id/workset_resttime" android:layout_weight="1"
-                android:text="@{converter.intToString(worksetViewModel.restTime)}"
-                android:onTextChanged='@{(s,start,end,before) -> worksetViewModel.input.restTime(converter.stringToInt(s.toString ?? ""))}'
+                android:text="@{viewModel.restTime.toString()}"
+                android:onTextChanged='@{(s,start,end,before) -> viewModel.parseRestTime(s.toString ?? "")}'
                 android:hint="쉬는시간"/>
         <Button
                 android:text="Button" android:layout_width="wrap_content"
+                android:onClick="@{v-> viewModel.clickDelete()}"
                 android:id="@+id/workset_delete" android:layout_weight="1" android:layout_height="wrap_content"/>
     </LinearLayout>
 </layout>
