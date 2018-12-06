@@ -1,4 +1,4 @@
-package com.develop.greedy0110.workouttracker.translater
+package com.develop.greedy0110.workouttracker.translator
 
 import com.develop.greedy0110.workouttracker.model.workout.TypeOfExercise
 import com.develop.greedy0110.workouttracker.model.workout.WorkSet
@@ -6,7 +6,7 @@ import com.develop.greedy0110.workouttracker.model.workout.Workout
 import com.develop.greedy0110.workouttracker.room.workout.WorkoutEntity
 import com.google.gson.Gson
 
-class WorkoutTranslater: BaseTranslater<Workout, WorkoutEntity> {
+class WorkoutTranslator: BaseTranslator<Workout, WorkoutEntity> {
     override fun from(data: WorkoutEntity) =  Workout(
             TypeOfExercise(data.name, data.target),
             fromString(data.sets),
