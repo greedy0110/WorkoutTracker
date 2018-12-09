@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">WorkoutTracker</string>
     <string name="add_workout_button">운동 입력</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

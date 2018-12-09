@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="viewModel" type="com.develop.greedy0110.workouttracker.viewModel.workout.WorkoutViewModel"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.workout.WorkoutFragment">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="select date"
+                    android:ems="10"/>
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:entries="@array/workout_name"
+                    android:id="@+id/workoutName" android:hint="운동 이름"/>
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:entries="@array/workout_target"
+                    android:id="@+id/targetName" android:hint="운동 타겟 부위"/>
+                <TextView
+                    android:text="세트"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/textView"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/set_recyclerview"
+                    app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager">
+                </androidx.recyclerview.widget.RecyclerView>
+
+                <Button
+                    android:text="세트 추가"
+                    android:layout_width="match_parent"
+                    android:onClick="@{v->viewModel.clickAddSet()}"
+                    android:layout_height="wrap_content" android:id="@+id/add_set_button"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="메모">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="메모"
+                        android:onTextChanged='@{(s,start,end,before) -> viewModel.parseMemo(s.toString ?? "")}' />
+                </com.google.android.material.textfield.TextInputLayout>
+                <Button
+                    android:text="@string/add_workout_button"
+                    android:layout_width="match_parent"
+                    android:onClick="@{v->viewModel.clickAddWorkout()}"
+                    android:layout_height="wrap_content" android:id="@+id/button"/>
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+</layout>

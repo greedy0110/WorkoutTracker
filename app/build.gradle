@@ -72,4 +72,6 @@ dependencies {
     implementation "org.koin:koin-android-viewmodel:$koin_version"
 
     implementation 'com.jakewharton.rxbinding3:rxbinding:3.0.0-alpha1'
+
+    implementation 'com.google.android.material:material:1.0.0'
 }
