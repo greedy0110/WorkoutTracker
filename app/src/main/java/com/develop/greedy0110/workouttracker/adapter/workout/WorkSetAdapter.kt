@@ -13,11 +13,6 @@ class WorkSetAdapter(
 ): BaseAdapter<WorkSetDataAdapter, WorkSetViewAdapter, WorkSetAdapter.ViewHolder>() {
     class ViewHolder(val binding: WorksetDataUiBinding): RecyclerView.ViewHolder(binding.root)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = view.onCreateViewHolder(parent, viewType)
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) = view.onBindViewHolder(holder, position)
-    override fun getItemCount() = data.getItemCount()
-
     init {
         data.items.subscribe {
             notifyDataSetChanged() // for redraw recyclerview

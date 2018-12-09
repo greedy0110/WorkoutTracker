@@ -9,49 +9,6 @@ import com.develop.greedy0110.workouttracker.utils.stringToInt
 import com.develop.greedy0110.workouttracker.viewModel.BaseViewModel
 
 class WorkSetViewModel(val workSet: WorkSet = WorkSet(0,0,0)): BaseViewModel() {
-//    var weight = 0
-//    var rep = 0
-//    var restTime = 0
-//
-//    init {
-//        val workset = worksets.value!![pos]
-//        weight = workset.weight
-//        rep = workset.rep
-//        restTime = workset.restTime
-//        modifyWorkSet()
-//    }
-//
-//    val input = object : WorkSetViewModelInput {
-//        override fun weight(s: Int) {
-//            weight = s
-//            Log.d("WorksetviewModel : ", "$pos : ${getWorkSet()}")
-//            modifyWorkSet()
-//        }
-//
-//        override fun rep(s: Int) {
-//            rep = s
-//            modifyWorkSet()
-//        }
-//
-//        override fun restTime(s: Int) {
-//            restTime = s
-//            modifyWorkSet()
-//        }
-//    }
-//
-//    fun getWorkSet(): WorkSet {
-//        return WorkSet(weight, rep, restTime)
-//    }
-//
-//    fun modifyWorkSet() {
-//        worksets.value?.let {
-//            if (it[pos] != getWorkSet()) { // prohibit infine loopping
-//                it[pos] = getWorkSet()
-//                worksets.value = it
-//            }
-//        }
-//    }
-
     private val _weight = MutableLiveData<Int>().default(workSet.weight)
     private val _rep = MutableLiveData<Int>().default(workSet.rep)
     private val _restTime = MutableLiveData<Int>().default(workSet.restTime)

@@ -4,13 +4,7 @@ import com.develop.greedy0110.workouttracker.adapter.BaseDataAdapter
 import com.develop.greedy0110.workouttracker.model.workout.WorkSet
 import io.reactivex.subjects.PublishSubject
 
-class WorkSetDataAdapter: BaseDataAdapter<WorkSet> {
-    private var _items = mutableListOf<WorkSet>()
-
-    override val items: PublishSubject<MutableList<WorkSet>> = PublishSubject.create()
-    override fun getItemCount() = _items.size
-    override fun getItemViewType(position: Int): Int = position
-
+class WorkSetDataAdapter: BaseDataAdapter<WorkSet>() {
     fun removeAt(pos: Int) {
         _items.removeAt(pos)
         items.onNext(_items)
@@ -27,14 +21,4 @@ class WorkSetDataAdapter: BaseDataAdapter<WorkSet> {
     }
 
     fun at(pos: Int): WorkSet = _items[pos]
-
-    fun get() = _items
-
-    init {
-        items.subscribe {
-            _items = it
-        }
-    }
-
-
 }

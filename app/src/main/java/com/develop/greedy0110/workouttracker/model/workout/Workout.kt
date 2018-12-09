@@ -26,4 +26,6 @@ data class WorkDate(
     val year: Int,
     val month: Int,
     val day: Int
-)
+) {
+    override fun toString() = "$year/$month/$day"
+}
