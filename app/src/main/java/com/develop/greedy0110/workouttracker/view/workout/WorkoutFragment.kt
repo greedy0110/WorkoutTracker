@@ -16,7 +16,7 @@ import com.develop.greedy0110.workouttracker.view.BaseFragment
 import com.develop.greedy0110.workouttracker.viewModel.workout.WorkoutViewModel
 import com.jakewharton.rxbinding3.view.clicks
 import com.jakewharton.rxbinding3.widget.itemSelections
-import kotlinx.android.synthetic.main.activity_add_workout.*
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_workout.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
@@ -42,16 +42,6 @@ class WorkoutFragment : BaseFragment<FragmentWorkoutBinding>() {
             viewModel.worksetDataAdapter,
             WorkSetViewAdapter(viewModel.worksetDataAdapter)
         )
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        val view = super.onCreateView(inflater, container, savedInstanceState)
-
-        return view
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
