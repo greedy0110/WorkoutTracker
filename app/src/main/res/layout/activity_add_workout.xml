@@ -12,48 +12,66 @@
             android:orientation="vertical"
             tools:context=".ui.AddWorkoutActivity">
 
-        <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPersonName"
-                android:ems="10"
-                android:onTextChanged='@{(s,start,end,before) -> viewModel.parseName(s.toString ?? "")}'
-                android:id="@+id/workoutName" android:hint="운동 이름"/>
-        <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPersonName"
-                android:ems="10"
-                android:onTextChanged='@{(s,start,end,before) -> viewModel.parseTarget(s.toString ?? "")}'
-                android:id="@+id/targetName" android:hint="운동 타겟 부위"/>
-        <TextView
-                android:text="세트"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/textView"/>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/set_recyclerview"
-                app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager">
-        </androidx.recyclerview.widget.RecyclerView>
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-        <Button
-                android:text="세트 추가"
-                android:layout_width="match_parent"
-                android:onClick="@{v->viewModel.clickAddSet()}"
-                android:layout_height="wrap_content" android:id="@+id/add_set_button"/>
-        <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textMultiLine"
-                android:ems="10"
-                android:onTextChanged='@{(s,start,end,before) -> viewModel.parseMemo(s.toString ?? "")}'
-                android:id="@+id/memoText" android:hint="메모"/>
-        <Button
-                android:text="@string/add_workout_button"
-                android:layout_width="match_parent"
-                android:onClick="@{v->viewModel.clickAddWorkout()}"
-                android:layout_height="wrap_content" android:id="@+id/button"/>
+                <TextView
+                    android:id="@+id/date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="select date"
+                    android:ems="10"/>
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:entries="@array/workout_name"
+                    android:id="@+id/workoutName" android:hint="운동 이름"/>
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:entries="@array/workout_target"
+                    android:id="@+id/targetName" android:hint="운동 타겟 부위"/>
+                <TextView
+                    android:text="세트"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/textView"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/set_recyclerview"
+                    app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager">
+                </androidx.recyclerview.widget.RecyclerView>
+
+                <Button
+                    android:text="세트 추가"
+                    android:layout_width="match_parent"
+                    android:onClick="@{v->viewModel.clickAddSet()}"
+                    android:layout_height="wrap_content" android:id="@+id/add_set_button"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:ems="10"
+                    android:onTextChanged='@{(s,start,end,before) -> viewModel.parseMemo(s.toString ?? "")}'
+                    android:id="@+id/memoText" android:hint="메모"/>
+                <Button
+                    android:text="@string/add_workout_button"
+                    android:layout_width="match_parent"
+                    android:onClick="@{v->viewModel.clickAddWorkout()}"
+                    android:layout_height="wrap_content" android:id="@+id/button"/>
+            </LinearLayout>
+        </ScrollView>
     </LinearLayout>
 </layout>

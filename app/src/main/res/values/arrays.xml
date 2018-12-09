@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="workout_name">
+        <item>bench press</item>
+        <item>squat</item>
+        <item>dead lift</item>
+        <item>barbell row</item>
+        <item>shoulder press</item>
+    </string-array>
+
+    <string-array name="workout_target">
+        <item>chest</item>
+        <item>back</item>
+        <item>leg</item>
+        <item>shoulder</item>
+    </string-array>
+</resources>

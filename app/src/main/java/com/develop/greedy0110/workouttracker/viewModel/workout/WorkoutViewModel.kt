@@ -4,15 +4,25 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import android.util.Log
 import com.develop.greedy0110.workouttracker.model.workout.TypeOfExercise
+import com.develop.greedy0110.workouttracker.model.workout.WorkDate
 import com.develop.greedy0110.workouttracker.model.workout.Workout
 import com.develop.greedy0110.workouttracker.model.workout.WorkoutRepository
 import com.develop.greedy0110.workouttracker.utils.SingleLiveEvent
+import com.develop.greedy0110.workouttracker.utils.default
 import com.develop.greedy0110.workouttracker.viewModel.BaseViewModel
+import java.util.*
 
 class WorkoutViewModel(private val repository: WorkoutRepository): BaseViewModel() {
     private val _name = MutableLiveData<String>()
     private val _target = MutableLiveData<String>()
     private val _memo = MutableLiveData<String>()
+    private val _date by lazy {
+        val cal = Calendar.getInstance()
+        val y = cal.get(Calendar.YEAR)
+        val m = cal.get(Calendar.MONTH)
+        val d = cal.get(Calendar.DAY_OF_MONTH)
+        MutableLiveData<MutableList<Int>>().default(mutableListOf(y,m,d))
+    }
     private val _clickAddWorkout = SingleLiveEvent<String>()
     private val _clickAddSet = SingleLiveEvent<String>()
 
@@ -20,6 +30,7 @@ class WorkoutViewModel(private val repository: WorkoutRepository): BaseViewModel
     val name: LiveData<String> get() = _name
     val target: LiveData<String> get() = _target
     val memo: LiveData<String> get() = _memo
+    val date: LiveData<MutableList<Int>> get() = _date
     val clickAddWorkout: LiveData<String> get() = _clickAddWorkout
     val clickAddSet: LiveData<String> get() = _clickAddSet
     val worksetDataAdapter = WorkSetDataAdapter()
@@ -48,7 +59,12 @@ class WorkoutViewModel(private val repository: WorkoutRepository): BaseViewModel
         _memo.value = s
     }
 
+    fun setDate(year: Int, month: Int, day: Int) {
+        _date.value = mutableListOf(year, month, day)
+    }
+
     private fun makeWorkout() = Workout(
+        WorkDate(_date.value!![0],_date.value!![1],_date.value!![2]),
         TypeOfExercise(_name.value?:"none", _target.value?:"none"),
         worksetDataAdapter.get().toList(),
         _memo.value?:""
