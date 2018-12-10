@@ -10,6 +10,7 @@ import com.google.gson.Gson
 
 class WorkoutTranslator: BaseTranslator<Workout, WorkoutEntity> {
     override fun from(data: WorkoutEntity) =  Workout(
+            data.uid,
             workDatefromString(data.date),
             TypeOfExercise(data.name, data.target),
             workSetsfromString(data.sets),
@@ -17,7 +18,7 @@ class WorkoutTranslator: BaseTranslator<Workout, WorkoutEntity> {
         )
 
     override fun to(data: Workout) = WorkoutEntity(
-        0, workDatetoString(data.date), data.type.name, data.type.target,
+        data.id, workDatetoString(data.date), data.type.name, data.type.target,
         workSetstoString(data.sets),
         data.memo
     )

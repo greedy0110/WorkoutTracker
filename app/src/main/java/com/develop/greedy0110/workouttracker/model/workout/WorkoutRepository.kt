@@ -6,4 +6,5 @@ import io.reactivex.Flowable
 interface WorkoutRepository {
     fun getWorkouts(): Flowable<List<Workout>>
     fun addWorkout(workout: Workout): Completable
+    fun deleteWorkout(workout: Workout): Completable
 }

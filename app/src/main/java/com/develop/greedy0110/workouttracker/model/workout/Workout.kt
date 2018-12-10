@@ -1,6 +1,7 @@
 package com.develop.greedy0110.workouttracker.model.workout
 
 data class Workout(
+    val id: Int,
     val date: WorkDate,
     val type: TypeOfExercise,
     val sets: List<WorkSet>,

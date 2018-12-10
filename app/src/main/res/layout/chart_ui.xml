@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.develop.greedy0110.workouttracker.viewModel.workout.WorkoutViewModel"/>
+            type="com.develop.greedy0110.workouttracker.viewModel.chart.ChartViewModel"/>
         <variable
             name="workout"
             type="com.develop.greedy0110.workouttracker.model.workout.Workout"/>
@@ -50,6 +50,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:text="delete"
+            android:onClick="@{v-> viewModel.clickDelete()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

@@ -64,7 +64,7 @@ class WorkoutViewModel(private val repository: WorkoutRepository): BaseViewModel
     }
 
     private fun makeWorkout() = Workout(
-        WorkDate(_date.value!![0],_date.value!![1],_date.value!![2]),
+        0, WorkDate(_date.value!![0],_date.value!![1],_date.value!![2]),
         TypeOfExercise(_name.value?:"none", _target.value?:"none"),
         worksetDataAdapter.get().toList(),
         _memo.value?:""

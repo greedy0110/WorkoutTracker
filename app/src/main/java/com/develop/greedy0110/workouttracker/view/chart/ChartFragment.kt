@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 
 import com.develop.greedy0110.workouttracker.R
 import com.develop.greedy0110.workouttracker.adapter.workout.ChartAdapter
@@ -43,5 +44,9 @@ class ChartFragment : BaseFragment<FragmentChartBinding>() {
 
         viewDataBinding.viewModel = viewModel
         chart_listview.adapter = adapter
+
+        adapter.data.removeWorkout.subscribe {
+            viewModel.deleteWorkout(it)
+        }.apply { addDisposable(this) }
     }
 }

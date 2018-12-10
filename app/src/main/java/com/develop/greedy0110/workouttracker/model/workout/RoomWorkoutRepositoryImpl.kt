@@ -18,4 +18,8 @@ class RoomWorkoutRepositoryImpl(private val database: WorkoutDatabase):
             database.workoutDao().insertAll(database.translater.to(workout))
         }.subscribeOn(Schedulers.io())
 
+    override fun deleteWorkout(workout: Workout) =
+            Completable.fromAction{
+                database.workoutDao().delete(database.translater.to(workout))
+            }.subscribeOn(Schedulers.io())
 }
