@@ -21,6 +21,10 @@ data class WorkSet (
     companion object {
         const val DEFAULT_RESTTIME = 60
     }
+
+    override fun toString(): String {
+        return "$weight KG / $rep 반복 / $restTime 휴식"
+    }
 }
 
 data class WorkDate(
