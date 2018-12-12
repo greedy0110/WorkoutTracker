@@ -7,13 +7,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 
 import com.develop.greedy0110.workouttracker.R
 import com.develop.greedy0110.workouttracker.adapter.workout.WorkSetAdapter
 import com.develop.greedy0110.workouttracker.databinding.FragmentWorkoutBinding
+import com.develop.greedy0110.workouttracker.utils.SingleLiveEvent
+import com.develop.greedy0110.workouttracker.utils.finish
 import com.develop.greedy0110.workouttracker.view.BaseFragment
 import com.develop.greedy0110.workouttracker.viewModel.workout.WorkoutViewModel
+import com.google.android.material.snackbar.Snackbar
 import com.jakewharton.rxbinding3.view.clicks
 import com.jakewharton.rxbinding3.widget.itemSelections
 import kotlinx.android.synthetic.main.activity_main.*
@@ -44,6 +48,9 @@ class WorkoutFragment : BaseFragment<FragmentWorkoutBinding>() {
         )
     }
 
+    private val _finished = SingleLiveEvent<String>()
+    val finished: LiveData<String> = _finished
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
@@ -72,5 +79,12 @@ class WorkoutFragment : BaseFragment<FragmentWorkoutBinding>() {
                 cur[0],cur[1],cur[2]
             ).show()
         }.apply { addDisposable(this) }
+
+        viewModel.clickAddWorkout.observe(this, Observer {
+            Snackbar.make(viewDataBinding.root, "운동 추가 완료!", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show()
+            _finished.call()
+            finish()
+        })
     }
 }

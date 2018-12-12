@@ -5,9 +5,11 @@
     <data>
         <variable name="viewModel" type="com.develop.greedy0110.workouttracker.viewModel.workout.WorkoutViewModel"/>
     </data>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@android:color/background_light"
         tools:context=".view.workout.WorkoutFragment">
 
         <ScrollView
@@ -23,40 +25,45 @@
                     android:id="@+id/date"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="select date"
-                    android:ems="10"/>
+                    android:ems="10"
+                    android:hint="select date" />
 
                 <Spinner
+                    android:id="@+id/workoutName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
                     android:ems="10"
                     android:entries="@array/workout_name"
-                    android:id="@+id/workoutName" android:hint="운동 이름"/>
+                    android:hint="운동 이름"
+                    android:inputType="textPersonName" />
+
                 <Spinner
+                    android:id="@+id/targetName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
                     android:ems="10"
                     android:entries="@array/workout_target"
-                    android:id="@+id/targetName" android:hint="운동 타겟 부위"/>
-                <TextView
-                    android:text="세트"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:id="@+id/textView"/>
+                    android:hint="운동 타겟 부위"
+                    android:inputType="textPersonName" />
 
-                <androidx.recyclerview.widget.RecyclerView
+                <TextView
+                    android:id="@+id/textView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="세트" />
+
+                <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/set_recyclerview"
-                    app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager">
-                </androidx.recyclerview.widget.RecyclerView>
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"></androidx.recyclerview.widget.RecyclerView>
 
                 <Button
-                    android:text="세트 추가"
+                    android:id="@+id/add_set_button"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:onClick="@{v->viewModel.clickAddSet()}"
-                    android:layout_height="wrap_content" android:id="@+id/add_set_button"/>
+                    android:text="세트 추가" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -70,11 +77,13 @@
                         android:hint="메모"
                         android:onTextChanged='@{(s,start,end,before) -> viewModel.parseMemo(s.toString ?? "")}' />
                 </com.google.android.material.textfield.TextInputLayout>
+
                 <Button
-                    android:text="@string/add_workout_button"
+                    android:id="@+id/button"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:onClick="@{v->viewModel.clickAddWorkout()}"
-                    android:layout_height="wrap_content" android:id="@+id/button"/>
+                    android:text="@string/add_workout_button" />
             </LinearLayout>
         </ScrollView>
 
