@@ -81,8 +81,13 @@ class WorkoutFragment : BaseFragment<FragmentWorkoutBinding>() {
         }.apply { addDisposable(this) }
 
         viewModel.clickAddWorkout.observe(this, Observer {
-            Snackbar.make(viewDataBinding.root, "운동 추가 완료!", Snackbar.LENGTH_LONG)
+            Snackbar.make(viewDataBinding.root, "운동 추가 완료!", Snackbar.LENGTH_SHORT)
                 .setAction("Action", null).show()
+            _finished.call()
+            finish()
+        })
+
+        viewModel.clickBack.observe(this, Observer {
             _finished.call()
             finish()
         })

@@ -34,9 +34,9 @@ class ChartViewAdapter(
         holder.binding.workout = workout
 
         holder.binding.deleteButton.setOnClickListener {
-            Log.d("뭐야", "눌리긴해?")
             dataAdapter.removeAt(pos) // TODO MVVM 관점에서 틀렸는거 같은데...
         }
+        Log.d("what : ", "$pos create in ${dataAdapter.getItemCount()}")
 
         val dataAdapter = WorkSetShowDataAdapter()
         val viewAdapter = WorkSetShowViewAdapter(dataAdapter)

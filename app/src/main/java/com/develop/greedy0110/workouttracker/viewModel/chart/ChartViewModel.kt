@@ -5,7 +5,6 @@ import com.develop.greedy0110.workouttracker.model.workout.Workout
 import com.develop.greedy0110.workouttracker.model.workout.WorkoutRepository
 import com.develop.greedy0110.workouttracker.utils.SingleLiveEvent
 import com.develop.greedy0110.workouttracker.viewModel.BaseViewModel
-import io.reactivex.android.schedulers.AndroidSchedulers
 
 class ChartViewModel(private val repository: WorkoutRepository): BaseViewModel() {
     private val _clickDelete = SingleLiveEvent<String>()

@@ -25,6 +25,7 @@ class WorkoutViewModel(private val repository: WorkoutRepository): BaseViewModel
     }
     private val _clickAddWorkout = SingleLiveEvent<String>()
     private val _clickAddSet = SingleLiveEvent<String>()
+    private val _clickBack = SingleLiveEvent<String>()
 
     // mutableLiveData 를 immutable 하게 노출
     val name: LiveData<String> get() = _name
@@ -33,6 +34,7 @@ class WorkoutViewModel(private val repository: WorkoutRepository): BaseViewModel
     val date: LiveData<MutableList<Int>> get() = _date
     val clickAddWorkout: LiveData<String> get() = _clickAddWorkout
     val clickAddSet: LiveData<String> get() = _clickAddSet
+    val clickBack: LiveData<String> get() = _clickBack
     val worksetDataAdapter = WorkSetDataAdapter()
 
     fun clickAddWorkout() {
@@ -45,6 +47,10 @@ class WorkoutViewModel(private val repository: WorkoutRepository): BaseViewModel
     fun clickAddSet() {
         _clickAddSet.call()
         worksetDataAdapter.add()
+    }
+
+    fun clickBack() {
+        _clickBack.call()
     }
 
     fun parseName(s: String) {
