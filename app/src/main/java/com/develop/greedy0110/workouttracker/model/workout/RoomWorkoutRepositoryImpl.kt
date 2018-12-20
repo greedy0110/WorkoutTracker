@@ -9,17 +9,17 @@ class RoomWorkoutRepositoryImpl(private val database: WorkoutDatabase):
     WorkoutRepository {
     override fun getWorkouts(): Flowable<List<Workout>> =
         database.workoutDao().getAll().subscribeOn(Schedulers.io()).flatMap {
-            Flowable.just(it.map { e -> database.translater.from(e) })
+            Flowable.just(it.map { e -> database.translator.from(e) })
         }
 
 
     override fun addWorkout(workout: Workout) =
         Completable.fromAction {
-            database.workoutDao().insertAll(database.translater.to(workout))
+            database.workoutDao().insertAll(database.translator.to(workout))
         }.subscribeOn(Schedulers.io())
 
     override fun deleteWorkout(workout: Workout) =
             Completable.fromAction{
-                database.workoutDao().delete(database.translater.to(workout))
+                database.workoutDao().delete(database.translator.to(workout))
             }.subscribeOn(Schedulers.io())
 }

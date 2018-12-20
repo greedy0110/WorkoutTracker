@@ -7,5 +7,5 @@ import com.develop.greedy0110.workouttracker.translator.workout.WorkoutTranslato
 @Database(entities = [WorkoutEntity::class], version = 2)
 abstract class WorkoutDatabase : RoomDatabase() {
     abstract fun workoutDao(): WorkoutDao
-    val translater = WorkoutTranslator()
+    val translator = WorkoutTranslator()
 }
