@@ -19,11 +19,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
         add_workout_button.setOnClickListener {
             val wof = WorkoutFragment()
-            supportFragmentManager.beginTransaction().add(R.id.main_activty, wof).commit()
-            add_workout_button.hide()
-            wof.finished.observe(this, Observer {
-                add_workout_button.show()
-            })
+            supportFragmentManager.beginTransaction().replace(android.R.id.content, wof).addToBackStack(null).commit()
         }
     }
 }

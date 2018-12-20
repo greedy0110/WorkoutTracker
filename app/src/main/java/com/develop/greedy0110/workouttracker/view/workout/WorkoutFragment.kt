@@ -48,9 +48,6 @@ class WorkoutFragment : BaseFragment<FragmentWorkoutBinding>() {
         )
     }
 
-    private val _finished = SingleLiveEvent<String>()
-    val finished: LiveData<String> = _finished
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
@@ -83,12 +80,10 @@ class WorkoutFragment : BaseFragment<FragmentWorkoutBinding>() {
         viewModel.clickAddWorkout.observe(this, Observer {
             Snackbar.make(viewDataBinding.root, "운동 추가 완료!", Snackbar.LENGTH_SHORT)
                 .setAction("Action", null).show()
-            _finished.call()
             finish()
         })
 
         viewModel.clickBack.observe(this, Observer {
-            _finished.call()
             finish()
         })
     }
